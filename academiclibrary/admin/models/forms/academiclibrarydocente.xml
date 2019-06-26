@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset>
+		<field
+				name="doc_id"
+				type="hidden"
+				/>
+		<field
+				name="doc_nome"
+				type="text"
+				label="Nome do docente"
+				description="O campo deve ser prenchido com o nome do docente."
+				size="255"
+				class="inputbox"
+				default=""
+				/>
+	</fieldset>
+</form>

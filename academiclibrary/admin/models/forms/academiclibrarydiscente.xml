@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset>
+		<field
+				name="dis_id"
+				type="hidden"
+				/>
+		<field
+				name="dis_matricula"
+				type="number"
+				label="Matrícula do discente"
+				description="O campo deve ser prenchido com a matrícula do discente."
+				size="11"
+				maxlength ="11"
+				class="inputbox"
+				default=""
+				/>
+		<field
+				name="dis_nome"
+				type="text"
+				label="Nome do discente"
+				description="O campo deve ser prenchido com o nome do discente."
+				size="255"
+				maxlength ="255"
+				class="inputbox"
+				default=""
+				/>
+	</fieldset>
+</form>
