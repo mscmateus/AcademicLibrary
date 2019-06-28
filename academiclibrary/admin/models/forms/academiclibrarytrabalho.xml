@@ -2,88 +2,84 @@
 <form>
 	<fieldset>
 		<field
-			name="tra_id"
-			type="hidden"
-			/>
+				name="tra_id"
+				type="hidden"
+				/>
 		<field
-			name="tra_tema"
-			type="text"
-			label="Tema"
-			description="O campo deve ser prenchido com o tema do trabalho."
-			size="255"
-			class="inputbox"
-			default=""
-			required="true"
-			/>
+				name="tra_tema"
+				type="text"
+				label="Tema"
+				description="O campo deve ser prenchido com o tema do trabalho."
+				size="255"
+				class="inputbox"
+				default=""
+				required="true"
+				/>
 		<field
-			name="tra_titulo"
-			type="text"
-			label="Título"
-			description="O campo deve ser prenchido com o titulo do trabalho."
-			size="255"
-			class="inputbox"
-			default=""
-			required="true"
-			/>
+				name="tra_titulo"
+				type="text"
+				label="Título"
+				description="O campo deve ser prenchido com o titulo do trabalho."
+				size="255"
+				class="inputbox"
+				default=""
+				required="true"
+				/>
 		<field
-			name="tra_ano"
-			type="number"
-			label="Ano"
-			description="O campo deve ser prenchido com o ano de apresentação do trabalho."
-			size="4"
-			class="inputbox"
-			default=""
-			required="true"
-			/>
+				name="tra_ano"
+				type="number"
+				label="Ano"
+				description="O campo deve ser prenchido com o ano de apresentação do trabalho."
+				size="4"
+				class="inputbox"
+				default=""
+				required="true"
+				/>
 		<field
-			name="tra_cat"
-			type="category"
-			label="Caregoria"
-			description="Selecione a categoria do trabalho."
-			class="inputbox"
-			default=""
-			required="true"
-			>
+				name="tra_cat"
+				type="category"
+				label="Caregoria"
+				description="Selecione a categoria do trabalho."
+				class="inputbox"
+				default=""
+				required="true"
+		>
 			<option value="0">Trabalho de Conclussão de Curso</option>
 			<option value="1">Relatório de Estágio</option>
 		</field>
 		<field
-			name="tra_nota"
-			type="number"
-			label="Nota"
-			description="O campo deve ser prenchido com a nota do trabalho."
-			size="5"
-			class="inputbox"
-			required="true"
-			default=""
-			/>
+				name="tra_nota"
+				type="number"
+				label="Nota"
+				description="O campo deve ser prenchido com a nota do trabalho."
+				size="5"
+				class="inputbox"
+				required="true"
+				default=""
+				/>
 		<field
-			name="tra_palavras_chaves"
-			type="textarea"
-			label="Palavras-chaves"
-			description="O campo deve ser prenchido com as palavras-chaves do trabalho."
-			size="20000"
-			rows="7"
-			cols="300"
-			class="inputbox"
-			required="true"
-			default=""
-			/>
+				name="tra_palavras_chaves"
+				type="textarea"
+				label="Palavras-chaves"
+				description="O campo deve ser prenchido com as palavras-chaves do trabalho."
+				size="20000"
+				rows="7"
+				cols="300"
+				class="inputbox"
+				required="true"
+				default=""
+				/>
 		<field
-			name="tra_resumo"
-			type="textarea"
-			label="Resumo"
-			description="O campo deve ser prenchido com o resumo do trabalho."
-			size="20000"
-			rows="7"
-			cols="300"
-			class="inputbox"
-			required="true"
-			default=""
-			/>
-		<field name="types" type="contenttype"
-			label="COM_TAGS_FIELD_TYPE_LABEL"
-			description="COM_TAGS_FIELD_TYPE_DESC"
-			multiple="true" />
+				name="tra_resumo"
+				type="textarea"
+				label="Palavras-chaves"
+				description="O campo deve ser prenchido com o resumo do trabalho."
+				size="20000"
+				rows="7"
+				cols="300"
+				class="inputbox"
+				required="true"
+				default=""
+				/>
 	</fieldset>
 </form>
