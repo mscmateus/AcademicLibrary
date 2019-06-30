@@ -43,11 +43,15 @@ $listDirn      = $this->escape($this->filter_order_Dir);
 			<?php echo JHtml::_('grid.sort', 'Id', 'tra_id', $listDirn, $listOrder); ?>
 			</th>
 			
-			<th width="40%">
+			<th width="15%">
+			<?php echo JHtml::_('grid.sort', 'Categoria', 'tra_cat', $listDirn, $listOrder); ?>
+			</th>
+
+			<th width="30%">
 			<?php echo JHtml::_('grid.sort', 'Título', 'tra_titulo', $listDirn, $listOrder); ?>
 			</th>
 		
-			<th width="30%">
+			<th width="25%">
 			<?php echo JHtml::_('grid.sort', 'Autor', 'dis_nome', $listDirn, $listOrder); ?>
 			</th>
 			
@@ -79,6 +83,11 @@ $listDirn      = $this->escape($this->filter_order_Dir);
 
 						<td align="center">
 							<?php echo $row->tra_id; ?>
+						</td>
+
+						<td align="center">
+								<?php echo ( $row->tra_cat==0 ? "Trabalho de Conclussão de Curso": "Relatório de Estágio"); ?>
+							</a>
 						</td>
 
 						<td>
