@@ -7,109 +7,66 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-// No direct access
-defined('_JEXEC') or die('Restricted access');
+    // No direct access
+    defined('_JEXEC') or die('Restricted access');
 
 
 
-$options = array(
-    'active'    => 'sobreTab'    // Not in docs, but DOES work
-);
-$vetFild;
+    $options = array(
+        'active'    => 'sobreTab'    // Not in docs, but DOES work
+    );
+    $vetFild;
 ?>
-
-<legend><?php echo JText::_('Detalhes'); ?></legend>
-<?php echo JHtml::_('bootstrap.startTabSet', 'TrabalhosTab', $options);?> 
-    <?php echo JHtml::_('bootstrap.addTab', 'TrabalhosTab', 'sobreTab', JText::_('Sobre o trabalho')); ?> 
-    <form action="<?php echo JRoute::_('index.php?option=com_academiclibrary&layout=edit&tra_id=' . (int) $this->item->tra_id); ?>" method="post" name="adminForm" id="adminForm">
-        <div class="form-horizontal">
+<form action="<?php echo JRoute::_('index.php?option=com_academiclibrary&layout=edit&tra_id=' . (int) $this->item->tra_id); ?>" method="post" name="adminForm" id="adminForm">
+    <input id="jform_title" type="hidden" name="helloworld-message-title"/>
+    <div class="form-horizontal">
+    <?php echo JHtml::_('bootstrap.startTabSet', 'TrabalhosTab', $options);?> 
+        <?php echo JHtml::_('bootstrap.addTab', 'TrabalhosTab', 'sobreTab', JText::_('Sobre o trabalho')); ?> 
             <fieldset class="adminform">
+                <legend><?php echo JText::_('Informações básicas do trabalho') ?></legend>
                 <div class="row-fluid">
                     <div class="span6">
-                        <?php
-                        $aux=0;
-                        foreach ($this->form->getFieldset() as $field):
-                            $vetFild[$aux] = $field;
-                            $aux++;
-                        endforeach; ?>
-                        <?php for($i = 0; $i<= 7; $i++){?>
-                            <div class="control-group">
-                                <div class="control-label"><?php echo $vetFild[$i]->label; ?></div>
-                                <div class="controls"><?php echo $vetFild[$i]->input; ?></div>
-                            </div>
-                        <?php } ?>
+                        <?php echo $this->form->renderFieldset('sobreotrabalho');  ?>
                     </div>
                 </div>
             </fieldset>
-        </div>
-        <input type="hidden" name="task" value="academiclibrarytrabalho.edit" />
-        <?php echo JHtml::_('form.token'); ?>
-    </form>
-    <?php echo JHtml::_('bootstrap.endTab');?> 
+        <?php echo JHtml::_('bootstrap.endTab');?> 
 
-
-
-
-    <?php echo JHtml::_('bootstrap.addTab', 'TrabalhosTab', 'autoriaTab', JText::_('Autoria e Orientação')); ?> 
-    <form action="<?php echo JRoute::_('index.php?option=com_academiclibrary&layout=edit&tra_id=' . (int) $this->item->tra_id); ?>" method="post" name="adminForm" id="adminForm">
-        <div class="form-horizontal">
+        <?php echo JHtml::_('bootstrap.addTab', 'TrabalhosTab', 'autoriaTab', JText::_('Autoria e Orientação')); ?> 
             <fieldset class="adminform">
+            <legend><?php echo JText::_('Autoria e orientação do trabalho') ?></legend>
                 <div class="row-fluid">
                     <div class="span6">
-                        <?php for($i = 8; $i<= 9; $i++){?>
-                            <div class="control-group">
-                                <div class="control-label"><?php echo $vetFild[$i]->label; ?></div>
-                                <div class="controls"><?php echo $vetFild[$i]->input; ?></div>
-                            </div>
-                        <?php } ?>
+                        <?php echo $this->form->renderFieldset('autoria');  ?>
                     </div>
                 </div>
             </fieldset>
-        </div>
-        <input type="hidden" name="task" value="academiclibrarytrabalho.edit" />
-        <?php echo JHtml::_('form.token'); ?>
-    </form>
-    <?php echo JHtml::_('bootstrap.endTab');?>
+        <?php echo JHtml::_('bootstrap.endTab');?>
 
-    <?php echo JHtml::_('bootstrap.addTab', 'TrabalhosTab', 'bancaTab', JText::_('Banca avaliadora')); ?> 
-    <form action="<?php echo JRoute::_('index.php?option=com_academiclibrary&layout=edit&tra_id=' . (int) $this->item->tra_id); ?>" method="post" name="adminForm" id="adminForm">
-        <div class="form-horizontal">
+        <?php echo JHtml::_('bootstrap.addTab', 'TrabalhosTab', 'bancaTab', JText::_('Banca avaliadora')); ?> 
             <fieldset class="adminform">
+            <legend><?php echo JText::_('Banca avaliadora do trabalho') ?></legend>
                 <div class="row-fluid">
                     <div class="span6">
-                        <?php for($i = 10; $i<= 10; $i++){?>
-                            <div class="control-group">
-                                <div class="control-label"><?php echo $vetFild[$i]->label; ?></div>
-                                <div class="controls"><?php echo $vetFild[$i]->input; ?></div>
-                            </div>
-                        <?php } ?>
+                        <?php echo $this->form->renderFieldset('banca');  ?>
+                    </div>
+                </div>
+            </fieldset> 
+        <?php echo JHtml::_('bootstrap.endTab');?>
+
+        <?php echo JHtml::_('bootstrap.addTab', 'TrabalhosTab', 'arquivosTab', JText::_('Arquivos')); ?> 
+            <fieldset class="adminform">
+            <legend><?php echo JText::_('Arquivos relacionados ao trabalho') ?></legend>
+                <div class="row-fluid">
+                    <div class="span6">
+                        <?php echo $this->form->renderFieldset('arquivos');  ?>
                     </div>
                 </div>
             </fieldset>
-        </div>
-        <input type="hidden" name="task" value="academiclibrarytrabalho.edit" />
-    </form> 
-    <?php echo JHtml::_('bootstrap.endTab');?>
+        <?php echo JHtml::_('bootstrap.endTab');?>
 
-    <?php echo JHtml::_('bootstrap.addTab', 'TrabalhosTab', 'arquivosTab', JText::_('Arquivos')); ?> 
-    <form action="<?php echo JRoute::_('index.php?option=com_academiclibrary&layout=edit&tra_id=' . (int) $this->item->tra_id); ?>" method="post" name="adminForm" id="adminForm">
-        <div class="form-horizontal">
-            <fieldset class="adminform">
-                <div class="row-fluid">
-                    <div class="span6">
-                        <?php for($i = 11; $i<= 12; $i++){?>
-                            <div class="control-group">
-                                <div class="control-label"><?php echo $vetFild[$i]->label; ?></div>
-                                <div class="controls"><?php echo $vetFild[$i]->input; ?></div>
-                            </div>
-                        <?php } ?>
-                    </div>
-                </div>
-            </fieldset>
-        </div>
-        <input type="hidden" name="task" value="academiclibrarytrabalho.edit" />
-    </form>
-    <?php echo JHtml::_('bootstrap.endTab');?>
-
-        <?php echo JHtml::_('form.token'); ?>
-<?php echo JHtml::_('bootstrap.endTabSet');?>
+    <?php echo JHtml::_('bootstrap.endTabSet');?>
+    </div>
+    <input type="hidden" name="task" value="academiclibrarytrabalho.edit" />
+    <?php echo JHtml::_('form.token'); ?>
+</form>

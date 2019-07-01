@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <form>
-	<fieldset>
+	<fieldset
+			name="sobreotrabalho"
+			label="Informações básicas do trabalho"
+	>
 		<field
 			name="tra_id"
 			type="hidden"
@@ -81,7 +84,11 @@
 			required="true"
 			default=""
 			/>
-
+	</fieldset>
+	<fieldset
+			name="autoria"
+			label="Informações sobre a autoria e orientação do trabalho"
+	>
 		<field
 			name="tra_autor"
 			type="academicautor"
@@ -93,6 +100,7 @@
 			multiple="multiple"
 			custom="deny"
 		/>
+
 		<field
 			name="tra_orientador"
 			type="academicorientador"
@@ -104,7 +112,11 @@
 			multiple="multiple"
 			custom="deny"
 		/>
-
+	</fieldset>
+	<fieldset
+			name="banca"
+			label="Banca avaliadora do trabalho"
+	>
 		<field
 			name="banca"
 			type="academicbanca"
@@ -116,6 +128,11 @@
 			multiple="true"
 			custom="deny"
 		/>
+	</fieldset>
+	<fieldset
+			name="arquivos"
+			label="Arquivos relacionados ao trabalho"
+	>
 		<field
 			name="projeto"
 			type="file"
@@ -138,6 +155,5 @@
 			multiple="true"
 			custom="deny"
 		/>
-
 	</fieldset>
 </form>
