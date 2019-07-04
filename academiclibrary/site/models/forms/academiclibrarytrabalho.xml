@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset
+			name="sobreotrabalho"
+			label="Informações básicas do trabalho"
+	>
+		<field
+			name="tra_id"
+			type="hidden"
+			/>
+		<field
+			name="tra_tema"
+			type="text"
+			label="Tema"
+			description="O campo deve ser prenchido com o tema do trabalho."
+			size="255"
+			class="inputbox"
+			default=""
+			required="true"
+			/>
+		<field
+			name="tra_titulo"
+			type="text"
+			label="Título"
+			description="O campo deve ser prenchido com o titulo do trabalho."
+			size="255"
+			class="inputbox"
+			default=""
+			required="true"
+			/>
+		<field
+			name="tra_ano"
+			type="number"
+			label="Ano"
+			description="O campo deve ser prenchido com o ano de apresentação do trabalho."
+			size="4"
+			class="inputbox"
+			default=""
+			required="true"
+			/>
+		<field
+			name="tra_cat"
+			type="category"
+			label="Caregoria"
+			description="Selecione a categoria do trabalho."
+			class="inputbox"
+			default=""
+			required="true"
+			>
+			<option value="0">Trabalho de Conclusão de Curso</option>
+			<option value="Relatório de Estágio">Relatório de Estágio</option>
+		</field>
+		<field
+			name="tra_nota"
+			type="number"
+			label="Nota"
+			description="O campo deve ser prenchido com a nota do trabalho."
+			size="5"
+			class="inputbox"
+			required="true"
+			default=""
+			/>
+		<field
+			name="tra_palavras_chaves"
+			type="textarea"
+			label="Palavras-chaves"
+			description="O campo deve ser prenchido com as palavras-chaves do trabalho."
+			size="20000"
+			rows="7"
+			cols="300"
+			class="inputbox"
+			required="true"
+			default=""
+			/>
+		<field
+			name="tra_resumo"
+			type="textarea"
+			label="Resumo"
+			description="O campo deve ser prenchido com o resumo do trabalho."
+			size="20000"
+			rows="7"
+			cols="300"
+			class="inputbox"
+			required="true"
+			default=""
+			/>
+	</fieldset>
+	<fieldset
+			name="autoria"
+			label="Informações sobre a autoria e orientação do trabalho"
+	>
+		<field
+			name="tra_autor"
+			type="academicautor"
+			class="inputbox"
+			default=""
+			label="Autor"
+			description="Use Ctrl to select multiple categories."
+			required=""
+			multiple="multiple"
+			custom="deny"
+		/>
+
+		<field
+			name="tra_orientador"
+			type="academicorientador"
+			class="inputbox"
+			default=""
+			label="Orientador"
+			description="Use Ctrl to select multiple categories."
+			required=""
+			multiple="multiple"
+			custom="deny"
+		/>
+	</fieldset>
+	<fieldset
+			name="banca"
+			label="Banca avaliadora do trabalho"
+	>
+		<field
+			name="banca"
+			type="academicbanca"
+			class="inputbox"
+			default=""
+			label="Select an option"
+			description="Selecione os membros da banca."
+			required=""
+			multiple="true"
+			custom="deny"
+		/>
+	</fieldset>
+	<fieldset
+			name="arquivos"
+			label="Arquivos relacionados ao trabalho"
+	>
+		<field
+			name="projeto"
+			type="file"
+			class="inputbox"
+			default=""
+			label="Select an option"
+			description="Selecione os membros da banca."
+			required=""
+			multiple="true"
+			custom="deny"
+		/>
+		<field
+			name="trabalho"
+			type="file"
+			class="inputbox"
+			default=""
+			label="Select an option"
+			description="Selecione os membros da banca."
+			required=""
+			multiple="true"
+			custom="deny"
+		/>
+	</fieldset>
+</form>

@@ -25,5 +25,5 @@ class AcademicLibraryController extends JControllerLegacy
 	 * @var string
 	 * @since 12.2
 	 */
-	protected $default_view = 'academiclibrarydiscentes';
+	protected $default_view = 'academiclibrarydocentes';
 }

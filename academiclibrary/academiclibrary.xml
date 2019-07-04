@@ -35,11 +35,18 @@
 		to copy FROM in the package to install therefore files copied
 		in this section are copied from /site/ in the package -->
 	<files folder="site">
-		<filename>index.html</filename>
-		<filename>academiclibrary.php</filename>
-		<filename>controller.php</filename>
-		<folder>views</folder>
-		<folder>models</folder>
+		<!-- Admin Main File Copy Section -->
+			<filename>index.html</filename>
+			<filename>academiclibrary.php</filename>
+			<filename>controller.php</filename>
+			<!-- tables files section -->
+			<folder>tables</folder>
+			<!-- models files section -->
+			<folder>models</folder>
+			<!-- views files section -->
+			<folder>views</folder>
+			<!-- controllers files section -->
+			<folder>controllers</folder>
 	</files>
 
         <languages folder="site/language">
