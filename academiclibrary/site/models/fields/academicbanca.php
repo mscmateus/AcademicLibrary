@@ -127,11 +127,11 @@ class JFormFieldAcademicBanca extends JFormFieldTag
 
 	public $type 		= 'academicbanca';
 	public function getValue() {
-
 	}
-
+	
 	public function getOptions() {
-
+		
+		console_log( 'console teste' );
 		
 		$db = JFactory::getDbo();
 		

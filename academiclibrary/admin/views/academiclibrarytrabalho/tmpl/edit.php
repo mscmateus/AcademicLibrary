@@ -20,7 +20,7 @@
 <form action="<?php echo JRoute::_('index.php?option=com_academiclibrary&layout=edit&tra_id=' . (int) $this->item->tra_id); ?>" method="post" name="adminForm" id="adminForm">
     <input id="jform_title" type="hidden" name="helloworld-message-title"/>
     <div class="form-horizontal">
-    <?php echo JHtml::_('bootstrap.startTabSet', 'TrabalhosTab', $options);?> 
+    <?php console_log( 'console teste' ); echo JHtml::_('bootstrap.startTabSet', 'TrabalhosTab', $options);?> 
         <?php echo JHtml::_('bootstrap.addTab', 'TrabalhosTab', 'sobreTab', JText::_('Sobre o trabalho')); ?> 
             <fieldset class="adminform">
                 <legend><?php echo JText::_('Informações básicas do trabalho') ?></legend>

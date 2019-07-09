@@ -48,7 +48,7 @@
 			required="true"
 			>
 			<option value="0">Trabalho de Conclusão de Curso</option>
-			<option value="Relatório de Estágio">Relatório de Estágio</option>
+			<option value="1">Relatório de Estágio</option>
 		</field>
 		<field
 			name="tra_nota"

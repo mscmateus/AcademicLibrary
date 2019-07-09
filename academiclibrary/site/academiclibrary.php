@@ -14,8 +14,6 @@ defined('_JEXEC') or die('Restricted access');
 $document = JFactory::getDocument();
 $document->addStyleDeclaration('.icon-helloworld {background-image: url(../media/com_helloworld/images/Tux-16x16.png);}');
 
-// Require helper file
-JLoader::register('AcademicLibraryHelper', JPATH_COMPONENT . '/helpers/academiclibrary.php');
 
 // Get an instance of the controller prefixed by HelloWorld
 $controller = JControllerLegacy::getInstance('AcademicLibrary');
