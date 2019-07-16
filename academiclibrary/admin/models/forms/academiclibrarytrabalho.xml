@@ -8,6 +8,14 @@
 			name="tra_id"
 			type="hidden"
 			/>
+			<field
+			name="tra_endereco_projeto"
+			type="hidden"
+			/>
+			<field
+			name="tra_endereco_trabalho"
+			type="hidden"
+			/>
 		<field
 			name="tra_tema"
 			type="text"
@@ -45,10 +53,11 @@
 			description="Selecione a categoria do trabalho."
 			class="inputbox"
 			default=""
+			extension=""
 			required="true"
 			>
 			<option value="0">Trabalho de Conclusão de Curso</option>
-			<option value="Relatório de Estágio">Relatório de Estágio</option>
+			<option value="1">Relatório de Estágio</option>
 		</field>
 		<field
 			name="tra_nota"
@@ -90,26 +99,26 @@
 			label="Informações sobre a autoria e orientação do trabalho"
 	>
 		<field
-			name="tra_autor"
+			name="autores"
 			type="academicautor"
 			class="inputbox"
 			default=""
 			label="Autor"
 			description="Use Ctrl to select multiple categories."
 			required=""
-			multiple="multiple"
+			multiple="true"
 			custom="deny"
 		/>
 
 		<field
-			name="tra_orientador"
+			name="orientadores"
 			type="academicorientador"
 			class="inputbox"
 			default=""
 			label="Orientador"
 			description="Use Ctrl to select multiple categories."
 			required=""
-			multiple="multiple"
+			multiple="true"
 			custom="deny"
 		/>
 	</fieldset>
@@ -117,15 +126,25 @@
 			name="banca"
 			label="Banca avaliadora do trabalho"
 	>
-		<field name="tra_defesa_data" type="calendar" default="" label="Data de defesa" description=""
-			class="input-small" required="true" filter="user_utc"
-			showtime="false" todaybutton="false" filltable="false" translateformat="true" />
+		<field 
+			name="tra_defesa_data"
+			type="calendar"
+			default=""
+			label="Data de defesa"
+			description=""
+			class="input-small" 
+			required="true"
+			filter="user_utc"
+			showtime="false"
+			todaybutton="false" 
+			filltable="false"
+			translateformat="true" />
 		<field
 			name="banca"
 			type="academicbanca"
 			class="inputbox"
 			default=""
-			label="Select an option"
+			label="Membros da banca"
 			description="Selecione os membros da banca."
 			required=""
 			multiple="true"
@@ -141,8 +160,8 @@
 			type="file"
 			class="inputbox"
 			default=""
-			label="Select an option"
-			description="Selecione os membros da banca."
+			label="Projeto do trabalho"
+			description="Arquivo pdf relativo ao projeto do trabalho acadêmico."
 			required=""
 			multiple="true"
 			custom="deny"
@@ -152,8 +171,8 @@
 			type="file"
 			class="inputbox"
 			default=""
-			label="Select an option"
-			description="Selecione os membros da banca."
+			label="Arquivo do trabalho"
+			description="Arquivo pdf relativo ao trabalho acadêmico."
 			required=""
 			multiple="true"
 			custom="deny"

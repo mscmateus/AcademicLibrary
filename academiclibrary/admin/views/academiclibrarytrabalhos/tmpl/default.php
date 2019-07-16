@@ -97,7 +97,7 @@ $listDirn      = $this->escape($this->filter_order_Dir);
 						</td>
 
 						<td align="center">
-							<?php echo $row->dis_nome; ?>
+							<?php echo $row->autores; ?>
 						</td>
 
 						<td align="center">

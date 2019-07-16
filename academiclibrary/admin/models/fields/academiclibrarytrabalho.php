@@ -36,21 +36,42 @@ class JFormFieldAcademicLibraryTrabalho extends JFormFieldList
 
 		$db    = JFactory::getDBO();
 		$query = $db->getQuery(true);
-		$query->select('tra_id,tra_tema','tra_titulo','tra_ano','tra_cat','tra_nota'
-		,'tra_palavras_chaves','tra_resumo','tra_autor','tra_orientador','tra_ban_id'
-		,'published');
+		$query->select(
+			'tra_id',
+			'tra_tema',
+			'tra_titulo',
+			'tra_ano',
+			'tra_cat',
+			'tra_nota',
+			'tra_palavras_chaves',
+			'tra_resumo',
+			'tra_autor',
+			'tra_orientador',
+			'tra_ban_id',
+			'published');
 		$query->from('#__al_trabalhos');
+		
 		$db->setQuery((string) $query);
 		$messages = $db->loadObjectList();
 		$options  = array();
-
+		
 		if ($messages)
 		{
 			foreach ($messages as $message)
 			{
-				$options[] = JHtml::_('select.option', $message->tra_id, $message->tra_tema,
-				$message->tra_titulo,$message->tra_ano,$message->tra_cat,$message->tra_nota,$message->tra_palavras_chaves,
-				$message->tra_resumo,$message->tra_autor,$message->tra_orientador,$message->tra_ban_id,$message->published;
+				$options[] = JHtml::_('select.option', 
+				$message->tra_id,
+				$message->tra_tema,
+				$message->tra_titulo,
+				$message->tra_ano,
+				$message->tra_cat,
+				$message->tra_nota,
+				$message->tra_palavras_chaves,
+				$message->tra_resumo,
+				$message->tra_defesa_data,
+				$message->tra_endereco_projeto,
+				$message->tra_endereco_trabalho,
+				$message->published;
 			}
 		}
 
