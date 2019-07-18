@@ -85,4 +85,61 @@ class AcademicLibraryModelAcademicLibraryTrabalho extends JModelAdmin
 
 		return $data;
 	}
+	public function getItem($pk = null)
+	{
+		$item = parent::getItem($pk);
+		if($item->tra_id!='' && $item->tra_id!=null){
+			$db = JFactory::getDbo();
+			//Pegar autores e carrega no item para o formulario
+			$query = $db->getQuery(true);
+			$query
+				->select(array('dis_nome'))
+				->from($db->quoteName('#__al_discentes', 'd'))
+				->join('INNER', $db->quoteName('#__al_autoria', 'a') . 'ON (' . $db->quoteName('d.dis_id'). '='. $db->quoteName('a.aut_dis_id').')')
+				->where($db->quoteName('a.aut_tra_id'). '=' . $item->tra_id);
+			$db->setQuery($query);
+			$db->execute();
+			// Reset the query using our newly populated query object.
+			$autores = $db->loadObjectList();
+			$aux = 0;
+			foreach($autores as $autor){
+				$item->autores[$aux]=$autor->dis_nome;
+				$aux++;
+			}
+			//pega os orientadores
+			$query = $db->getQuery(true);
+			$query
+				->select(array('doc_nome'))
+				->from($db->quoteName('#__al_docentes', 'd'))
+				->join('INNER', $db->quoteName('#__al_orientacao', 'o') . 'ON (' . $db->quoteName('d.doc_id'). '='. $db->quoteName('o.ori_doc_id').')')
+				->where($db->quoteName('o.ori_tra_id'). '=' . $item->tra_id);
+			$db->setQuery($query);
+			$db->execute();
+	
+			$orientadores = $db->loadObjectList();
+			$aux = 0;
+			foreach($orientadores as $orientador){
+				$item->orientadores[$aux]=$orientador->doc_nome;
+				$aux++;
+			}
+			//pega os membros da banca
+			$query = $db->getQuery(true);
+			$query
+				->select(array('doc_nome'))
+				->from($db->quoteName('#__al_docentes', 'd'))
+				->join('INNER', $db->quoteName('#__al_banca', 'b') . 'ON (' . $db->quoteName('d.doc_id'). '='. $db->quoteName('b.ban_doc_id').')')
+				->where($db->quoteName('b.ban_tra_id'). '=' . $item->tra_id);
+			$db->setQuery($query);
+			$db->execute();
+	
+			$banca = $db->loadObjectList();
+			$aux = 0;
+			foreach($banca as $membro){
+				$item->banca[$aux]=$membro->doc_nome;
+				$aux++;
+			}
+		}
+		//var_dump($item);
+		return $item;
+	}
 }

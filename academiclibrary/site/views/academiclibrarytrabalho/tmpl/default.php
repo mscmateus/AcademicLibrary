@@ -36,8 +36,27 @@
         <fieldset class="adminform">
             <div class="row-fluid">
                 <div class="span6">
-                    <p>Autoria: <?php echo $this->item->tra_autor ?></p>
-                    <p>Orientação: <?php echo $this->item->tra_orientador ?></p>
+                    <p>Autoria: <?php
+                    $aux=0;
+                    foreach ($this->item->autores as $autor){
+                        if($aux!= sizeof($this->item->autores)-1){
+                            echo  $autor.", ";
+                        }else{
+                            echo  $autor;
+                        }
+                        $aux++;
+                    }
+                    ?></p>
+                    <p>Orientação: <?php 
+                    $aux=0;
+                    foreach ($this->item->orientadores as $orientador){
+                        if($aux!= sizeof($this->item->orientadores)-1){
+                            echo $orientador.", ";
+                        }else{
+                            echo $orientador;
+                        }
+                        $aux++;
+                    }?></p>
                 </div>
             </div>
         </fieldset>
@@ -47,7 +66,17 @@
         <fieldset class="adminform">
             <div class="row-fluid">
                 <div class="span6">
-                    <p>Membros da banca: <?php echo $this->item->tra_banca ?></p>
+                    <p>Data de defesa: <?php echo $this->item->tra_defesa_data ?></p>
+                    <p>Membros da banca: <?php 
+                    $aux=0;
+                    foreach ($this->item->banca as $membro){
+                        if($aux!= sizeof($this->item->banca)-1){
+                            echo $membro.", ";
+                        }else{
+                            echo $membro;
+                        }
+                        $aux++;
+                    }?></p>
                 </div>
             </div>
         </fieldset> 
@@ -57,7 +86,7 @@
         <fieldset class="adminform">
             <div class="row-fluid">
                 <div class="span6">
-                    <?php echo $this->form->renderFieldset('arquivos');  ?>
+                    <?php echo 'link do arquivo'  ?>
                 </div>
             </div>
         </fieldset>

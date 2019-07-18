@@ -152,6 +152,10 @@ class AcademicLibraryModelAcademicLibraryTrabalho extends JModelAdmin
 		$row =& $this->getTable();
 		var_dump($cids);
 		foreach($cids as $cid) {
+
+			JFile::delete($path.$file);
+
+
 			$query = $db->getQuery(true);
 			
 			$query->delete($db->quoteName('#__al_banca'));

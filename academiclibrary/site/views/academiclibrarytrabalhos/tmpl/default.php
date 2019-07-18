@@ -85,7 +85,29 @@ $listDirn      = $this->escape($this->filter_order_Dir);
 						</td>
 
 						<td align="center">
-							<?php echo $row->tra_autor; ?>
+						<?php
+							$db = JFactory::getDbo();
+							$query = $db->getQuery(true);
+							$query
+								->select(array('dis_nome'))
+								->from($db->quoteName('#__al_discentes', 'd'))
+								->join('INNER', $db->quoteName('#__al_autoria', 'a') . 'ON (' . $db->quoteName('d.dis_id'). '='. $db->quoteName('a.aut_dis_id').')')
+								->where($db->quoteName('a.aut_tra_id'). '=' . $row->tra_id);
+							$db->setQuery($query);
+							$db->execute();
+							// Reset the query using our newly populated query object.
+							$result = $db->loadObjectList();
+							//var_dump(sizeof($result));
+							$aux=0;
+							foreach ($result as $autor){
+								if($aux!= sizeof($result)-1){
+									echo  $autor->dis_nome.", ";
+								}else{
+									echo  $autor->dis_nome;
+								}
+								$aux++;
+							}
+								?>
 						</td>
 
 						<td align="center">
