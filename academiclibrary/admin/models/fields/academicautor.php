@@ -28,13 +28,14 @@ class JFormFieldAcademicAutor extends JFormFieldTag
 		
 		
 		$query = $db->getQuery(true);
-		$query->select('d.dis_nome')->from('`#__al_discentes` AS d');
+		$query->select('d.dis_nome, d.dis_id')->from('`#__al_discentes` AS d');
 		
 		
 		
 		$rows = $db->setQuery($query)->loadObjectlist();
 		foreach($rows as $row){
-			 $discentes[] = $row->dis_nome;
+			 $discentes[] = JHtml::_(
+				'select.option', $row->dis_id, $row->dis_nome, "value", "text");
 		}
 		// Merge any additional options in the XML definition.
 		if(empty($discentes)){

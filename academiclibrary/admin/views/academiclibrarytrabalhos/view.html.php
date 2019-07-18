@@ -39,7 +39,7 @@ class AcademicLibraryViewAcademicLibraryTrabalhos extends JViewLegacy
 		$this->filter_order_Dir = $app->getUserStateFromRequest($context.'filter_order_Dir', 'filter_order_Dir', 'asc', 'cmd');
 		$this->filterForm    	= $this->get('FilterForm');
 		$this->activeFilters 	= $this->get('ActiveFilters');
-
+		
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))
 		{

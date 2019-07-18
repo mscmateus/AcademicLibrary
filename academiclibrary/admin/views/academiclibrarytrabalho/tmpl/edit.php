@@ -26,7 +26,8 @@
                 <legend><?php echo JText::_('Informações básicas do trabalho') ?></legend>
                 <div class="row-fluid">
                     <div class="span6">
-                        <?php echo $this->form->renderFieldset('sobreotrabalho');  ?>
+                        <?php
+                        echo $this->form->renderFieldset('sobreotrabalho');  ?>
                     </div>
                 </div>
             </fieldset>
@@ -37,7 +38,9 @@
             <legend><?php echo JText::_('Autoria e orientação do trabalho') ?></legend>
                 <div class="row-fluid">
                     <div class="span6">
-                        <?php echo $this->form->renderFieldset('autoria');  ?>
+                        <?php
+                        echo $this->form->renderFieldset('autoria'); 
+                        ?>
                     </div>
                 </div>
             </fieldset>

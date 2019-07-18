@@ -48,11 +48,13 @@ class JFormFieldAcademicLibraryTrabalho extends JFormFieldList
 			'tra_autor',
 			'tra_orientador',
 			'tra_ban_id',
-			'published');
+			'published',);
 		$query->from('#__al_trabalhos');
 		
 		$db->setQuery((string) $query);
 		$messages = $db->loadObjectList();
+
+
 		$options  = array();
 		
 		if ($messages)

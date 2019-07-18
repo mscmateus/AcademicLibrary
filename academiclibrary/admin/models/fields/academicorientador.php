@@ -30,13 +30,14 @@ class JFormFieldAcademicOrientador extends JFormFieldTag
 		
 		
 		$query = $db->getQuery(true);
-		$query->select('d.doc_nome')->from('`#__al_docentes` AS d');
+		$query->select('d.doc_nome, d.doc_id')->from('`#__al_docentes` AS d');
 		
 		
 		
 		$rows = $db->setQuery($query)->loadObjectlist();
 		foreach($rows as $row){
-			 $docentes[] = $row->doc_nome;
+			 $docentes[] = JHtml::_(
+				'select.option', $row->doc_id, $row->doc_nome, "value", "text");
 		}
 		if(empty($docentes)){
 			$docentes[0]="";

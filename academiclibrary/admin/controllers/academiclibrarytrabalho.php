@@ -21,17 +21,26 @@ defined('_JEXEC') or die('Restricted access');
 
 class AcademicLibraryControllerAcademicLibraryTrabalho extends JControllerForm
 {
+	public $edicao = true;
 	public function saveBanca($traId, $banca){
 		
 		$db = JFactory::getDbo();
 		// Create a new query object.
 		$query = $db->getQuery(true);
 
-		//foreach ($banca as $membroId){
+		if($this->edicao == true){
+			$query->delete($db->quoteName('#__al_banca'));
+			$query->where($db->quoteName('ban_tra_id'). '=' . $traId);
+			$db->setQuery($query);
+			$db->execute();
+		}
+
+		foreach ($banca as $membroId){
+			$query = $db->getQuery(true);
 			// Insert columns.
 			$columns = array('ban_tra_id', 'ban_doc_id');
 			// Insert values.
-			$values = array($traId, $banca[0]);
+			$values = array($traId, $membroId);
 			// Prepare the insert query.
 			$query
 				->insert($db->quoteName('#__al_banca'))
@@ -40,7 +49,7 @@ class AcademicLibraryControllerAcademicLibraryTrabalho extends JControllerForm
 			// Set the query using our newly populated query object and execute it.
 			$db->setQuery($query);
 			$db->execute();
-		//}
+		}
 	}
 
 	public function saveAutoria($traId, $autores){
@@ -49,7 +58,15 @@ class AcademicLibraryControllerAcademicLibraryTrabalho extends JControllerForm
 		// Create a new query object.
 		$query = $db->getQuery(true);
 
+		if($this->edicao == true){
+			$query->delete($db->quoteName('#__al_autoria'));
+			$query->where($db->quoteName('aut_tra_id'). '=' . $traId);
+			$db->setQuery($query);
+			$db->execute();
+		}
+
 		foreach ($autores as $autorId){
+			$query = $db->getQuery(true);
 			// Insert columns.
 			$columns = array('aut_tra_id', 'aut_dis_id');
 			// Insert values.
@@ -70,8 +87,15 @@ class AcademicLibraryControllerAcademicLibraryTrabalho extends JControllerForm
 		$db = JFactory::getDbo();
 		// Create a new query object.
 		$query = $db->getQuery(true);
+		if($this->edicao == true){
+			$query->delete($db->quoteName('#__al_orientacao'));
+			$query->where($db->quoteName('ori_tra_id'). '=' . $traId);
+			$db->setQuery($query);
+			$db->execute();
+		}
 
 		foreach ($orientadores as $orientadorId){
+			$query = $db->getQuery(true);
 			// Insert columns.
 			$columns = array('ori_tra_id', 'ori_doc_id');
 			// Insert values.
@@ -87,6 +111,7 @@ class AcademicLibraryControllerAcademicLibraryTrabalho extends JControllerForm
 		}
 	}
 	public function getAId(){
+		
 		$db = JFactory::getDbo();
 		// Create a new query object.
 		$query = $db->getQuery(true);
@@ -98,7 +123,8 @@ class AcademicLibraryControllerAcademicLibraryTrabalho extends JControllerForm
 		$db->setQuery((string) $query);
 		$result = $db->loadObjectList();
 		$id = $result->tra_id;
-		return $id == '' ? 1 : $id+1 ;
+		$this->edicao = false;
+		return $id == NULL ?  1 : $id++ ;
 	}
    public function save($data = array(), $key = 'id'){
 		//Debugging 
@@ -112,8 +138,11 @@ class AcademicLibraryControllerAcademicLibraryTrabalho extends JControllerForm
 		
 		// Get posted data
 		$data  = $jinput->get('jform', null, 'raw');
-
-		$id = $this->getAId();
+		if($data["tra_id"]=='' || $data["tra_id"]==null){
+			$id = $this->getAId();
+		}else{
+			$id=$data["tra_id"];
+		}
 		//Pegando os arquivos
 		$files = $this->input->files->get('jform', array(), 'array');
 		//Salvando banca no DB
@@ -123,30 +152,30 @@ class AcademicLibraryControllerAcademicLibraryTrabalho extends JControllerForm
 		//Salvanco orientadores no DB
 		$this->saveOrientacao($id, $data["orientadores"]);
 		//Salvando arquivo do projeto, type = 0 = projeto
-		$file_ext=strtolower(end(explode('.',JFile::makeSafe($files["projeto"][0]['name']))));
-		$filename = $files["projeto"][0]['name'] = str_replace(' ', '-', $files["projeto"][0]['name']);
-		// Move the uploaded file into a permanent location.
-		if ( $filename != '' ) {
-			// Make sure that the full file path is safe.s
-			$data["tra_endereco_projeto"] = JPATH_ROOT."/uploads/". $filename;
-			$filepath = JPath::clean(JPATH_ROOT."/uploads/". $filename);
-			// Move the uploaded file.
-			JFile::upload( $files["projeto"][0]['tmp_name'], $filepath );
-		}
-
 		$file_exttra=strtolower(end(explode('.',JFile::makeSafe($files["trabalho"][0]['name']))));
 		$filenametra = $files["trabalho"][0]['name'] = str_replace(' ', '-', $files["trabalho"][0]['name']);
 		// Move the uploaded file into a permanent location.
 		if ( $filenametra != '' ) {
 			// Make sure that the full file path is safe.s
-			$data["tra_endereco_trabalho"] = JPATH_ROOT."/uploads/". $filenametra;
 			$filepathtra = JPath::clean(JPATH_ROOT."/uploads/". $filenametra);
 			// Move the uploaded file.
-			JFile::upload( $files["projeto"][0]['tmp_name'], $filepathtra );
+			if(JFile::upload( $files["projeto"][0]['tmp_name'], $filepathtra )){
+				$data["tra_endereco_trabalho"] = JPATH_ROOT."/uploads/". $filenametra;
+			}
 		}
-		var_dump($data["banca"]);
+		$file_ext=strtolower(end(explode('.',JFile::makeSafe($files["projeto"][0]['name']))));
+		$filename = $files["projeto"][0]['name'] = str_replace(' ', '-', $files["projeto"][0]['name']);
+		// Move the uploaded file into a permanent location.
+		if ( $filename != '' ) {
+			// Make sure that the full file path is safe.s
+			$filepath = JPath::clean(JPATH_ROOT."/uploads/". $filename);
+			// Move the uploaded file.
+			if(JFile::upload( $files["projeto"][0]['tmp_name'], $filepath )){
+				$data["tra_endereco_projeto"] = JPATH_ROOT."/uploads/". $filename;
+			}
+		}
 		JRequest::setVar('jform', $data, 'post');
 		$return = parent::save($data);
 		return $return;
-   }
+	}
 }
