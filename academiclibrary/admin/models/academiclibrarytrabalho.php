@@ -143,4 +143,41 @@ class AcademicLibraryModelAcademicLibraryTrabalho extends JModelAdmin
 		//var_dump($item);
 		return $item;
 	}
+	public function delete(&$pks)
+	{
+		$db = JFactory::getDbo();
+		// Create a new query object.
+		
+		$cids = JRequest::getVar( 'cid', array(0), 'post', 'array' );
+		$row =& $this->getTable();
+		var_dump($cids);
+		foreach($cids as $cid) {
+			$query = $db->getQuery(true);
+			
+			$query->delete($db->quoteName('#__al_banca'));
+			$query->where($db->quoteName('ban_tra_id'). '=' . $cid);
+			$db->setQuery($query);
+			$db->execute();
+
+			$query = $db->getQuery(true);
+
+			$query->delete($db->quoteName('#__al_autoria'));
+			$query->where($db->quoteName('aut_tra_id'). '=' . $cid);
+			$db->setQuery($query);
+			$db->execute();
+
+			$query = $db->getQuery(true);
+
+			$query->delete($db->quoteName('#__al_orientacao'));
+			$query->where($db->quoteName('ori_tra_id'). '=' . $cid);
+			$db->setQuery($query);
+			$db->execute();
+			if (!$row->delete( $cid )) {
+					$this->setError( $row->getErrorMsg() );
+					return false;
+			}
+		}
+
+		return true;
+	}
 }

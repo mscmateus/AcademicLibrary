@@ -116,15 +116,24 @@ class AcademicLibraryControllerAcademicLibraryTrabalho extends JControllerForm
 		// Create a new query object.
 		$query = $db->getQuery(true);
 		$query
-			->select('MAX('.$db->quoteName('tra_id').')')
+			->select('MAX('.$db->quoteName('tra_id').') as max')
 			->from($db->quoteName('#__al_trabalhos'));
 		$db->setQuery($query);
 		$db->execute();
 		$db->setQuery((string) $query);
 		$result = $db->loadObjectList();
-		$id = $result->tra_id;
+		$id = $result[0]->max;
 		$this->edicao = false;
-		return $id == NULL ?  1 : $id++ ;
+		if($id == NULL){
+			$id=1;
+			$query= 'ALTER TABLE #__al_trabalhos AUTO_INCREMENT = 0';
+			$db->setQuery($query);
+			$db->execute();
+		}else{
+			$id = (int) $result[0]->max;
+			$id++;
+		}
+		return  $id  ;
 	}
    public function save($data = array(), $key = 'id'){
 		//Debugging 
