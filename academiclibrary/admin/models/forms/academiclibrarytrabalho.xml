@@ -155,7 +155,7 @@
 			name="arquivos"
 			label="Arquivos relacionados ao trabalho"
 	>
-		<field
+		<!-- <field
 			name="projeto"
 			type="file"
 			class="inputbox"
@@ -165,7 +165,7 @@
 			required=""
 			multiple="true"
 			custom="deny"
-		/>
+		/> -->
 		<field
 			name="trabalho"
 			type="file"

@@ -142,6 +142,7 @@ class AcademicLibraryControllerAcademicLibraryTrabalho extends JControllerForm
 		
 		// Neccesary libraries and variables
 		jimport('joomla.filesystem.file');
+		jimport('joomla.filesystem.folder');
 		// Get input object
 		$jinput = JFactory::getApplication()->input;
 		
@@ -161,28 +162,40 @@ class AcademicLibraryControllerAcademicLibraryTrabalho extends JControllerForm
 		//Salvanco orientadores no DB
 		$this->saveOrientacao($id, $data["orientadores"]);
 		//Salvando arquivo do projeto, type = 0 = projeto
+		
+		
 		$file_exttra=strtolower(end(explode('.',JFile::makeSafe($files["trabalho"][0]['name']))));
 		$filenametra = $files["trabalho"][0]['name'] = str_replace(' ', '-', $files["trabalho"][0]['name']);
 		// Move the uploaded file into a permanent location.
-		if ( $filenametra != '' ) {
+		if ( $filenametra != '' && $filenametra != $data["tra_endereco_projeto"]) {
 			// Make sure that the full file path is safe.s
 			$filepathtra = JPath::clean(JPATH_ROOT."/uploads/". $filenametra);
 			// Move the uploaded file.
-			if(JFile::upload( $files["projeto"][0]['tmp_name'], $filepathtra )){
-				$data["tra_endereco_trabalho"] = JPATH_ROOT."/uploads/". $filenametra;
+			if($this->edicao == true){
+					JFile::delete(JPath::clean(JPATH_ROOT."/uploads/".$data["tra_endereco_trabalho"]));
+					$data["tra_endereco_trabalho"] = "";
+					if(JFile::upload( $files["trabalho"][0]['tmp_name'], $filepathtra )){
+						$data["tra_endereco_trabalho"] = $filenametra;
+					}
+			}else{
+				if(JFile::upload( $files["trabalho"][0]['tmp_name'], $filepathtra )){
+					//JFile::delete(JPath::clean(JPATH_ROOT."/uploads/".$data["tra_endereco_projeto"]));
+					$data["tra_endereco_trabalho"] = $filenametra;
+				}
 			}
 		}
-		$file_ext=strtolower(end(explode('.',JFile::makeSafe($files["projeto"][0]['name']))));
-		$filename = $files["projeto"][0]['name'] = str_replace(' ', '-', $files["projeto"][0]['name']);
-		// Move the uploaded file into a permanent location.
-		if ( $filename != '' ) {
-			// Make sure that the full file path is safe.s
-			$filepath = JPath::clean(JPATH_ROOT."/uploads/". $filename);
-			// Move the uploaded file.
-			if(JFile::upload( $files["projeto"][0]['tmp_name'], $filepath )){
-				$data["tra_endereco_projeto"] = JPATH_ROOT."/uploads/". $filename;
-			}
-		}
+		// $file_ext=strtolower(end(explode('.',JFile::makeSafe($files["projeto"][0]['name']))));
+		// $filename = $files["projeto"][0]['name'] = str_replace(' ', '-', $files["projeto"][0]['name']);
+		// // Move the uploaded file into a permanent location.
+		// if ( $filename != '' && $filename != $data["tra_endereco_projeto"]) {
+		// 	// Make sure that the full file path is safe.s
+		// 	$filepath = JPath::clean(JPATH_ROOT."/uploads/". $filename);
+		// 	// Move the uploaded file.
+		// 	if(JFile::upload( $files["projeto"][0]['tmp_name'], $filepath )){
+		// 		//JFile::delete(JPath::clean(JPATH_ROOT."/uploads/".$data["tra_endereco_trabalho"]));
+		// 		$data["tra_endereco_projeto"] = $filename;
+		// 	}
+		// }
 		JRequest::setVar('jform', $data, 'post');
 		$return = parent::save($data);
 		return $return;

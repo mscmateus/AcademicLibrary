@@ -147,14 +147,23 @@ class AcademicLibraryModelAcademicLibraryTrabalho extends JModelAdmin
 	{
 		$db = JFactory::getDbo();
 		// Create a new query object.
-		
+		jimport('joomla.filesystem.file');
 		$cids = JRequest::getVar( 'cid', array(0), 'post', 'array' );
 		$row =& $this->getTable();
-		var_dump($cids);
+		//var_dump($cids);
 		foreach($cids as $cid) {
+			//em teoria exclui os arquivos
+				$query = $db->getQuery(true);
+				$query
+					->select(array('tra_endereco_projeto','tra_endereco_trabalho'))
+					->from($db->quoteName('#__al_trabalhos', 't'))
+					->where($db->quoteName('tra_id'). '=' . $cid);
+				$db->setQuery($query);
+				$db->execute();
+				$filesNamesh=$db->loadObjectList();
 
-			JFile::delete($path.$file);
-
+				//JFile::delete(JPath::clean(JPATH_ROOT."/uploads/".$filesNamesh->tra_endereco_projeto));
+				JFile::delete(JPath::clean(JPATH_ROOT."/uploads/".$filesNamesh[0]->tra_endereco_trabalho));
 
 			$query = $db->getQuery(true);
 			

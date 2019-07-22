@@ -13,6 +13,7 @@
         'active'    => 'sobreTab'    // Not in docs, but DOES work
     );
     $vetFild;
+    
 ?>
 <input id="jform_title" type="hidden" name="helloworld-message-title"/>
 <div class="form-horizontal">
@@ -86,7 +87,16 @@
         <fieldset class="adminform">
             <div class="row-fluid">
                 <div class="span6">
-                    <?php echo 'link do arquivo'  ?>
+                <?php
+                    jimport('joomla.filesystem.file');
+                    jimport( 'joomla.environment.uri' );
+                    if(JFile::exists(JPATH_ROOT."/uploads/".$this->item->tra_endereco_trabalho)){
+                        $link = JRoute::_(new JURI(JPath::clean(JPATH_ROOT."/uploads/".$this->item->tra_endereco_trabalho)));
+                        echo '<a href="'.$link.'">Baixar arquivo do trabalho</a>';
+                    }else{
+                        echo 'Não há arquivo do trabalho disponível.';
+                    }
+                ?>
                 </div>
             </div>
         </fieldset>
