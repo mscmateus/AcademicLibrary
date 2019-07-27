@@ -17,6 +17,7 @@
     );
     $vetFild;
     jimport('joomla.filesystem.folder');
+    jimport('joomla.filesystem.file');
 ?>
 <form action="<?php echo JRoute::_('index.php?option=com_academiclibrary&layout=edit&tra_id=' . (int) $this->item->tra_id); ?>" method="post" name="adminForm" id="adminForm" enctype="multipart/form-data">
     <input id="jform_title" type="hidden" name="helloworld-message-title"/>
@@ -63,11 +64,11 @@
             <legend><?php echo JText::_('Arquivos relacionados ao trabalho') ?></legend>
                 <div class="row-fluid">
                     <div class="span6">
-                        <?php if($this->item->tra_endereco_trabalho!='' && $this->item->tra_endereco_trabalho!=null){
+                        <?php if(JFile::exists(JPATH_ROOT."/uploads/".$this->item->tra_endereco_trabalho)){
                             echo "Arquivos atual: ".$this->item->tra_endereco_trabalho;
                         }?>
                         <?php echo $this->form->renderField('trabalho');?>
-                        <?php if($this->item->tra_endereco_projeto!='' && $this->item->tra_endereco_projeto!=null && JFolder::exists(JPATH_ROOT."/uploads/".$this->item->tra_endereco_projeto)){
+                        <?php if(JFile::exists(JPATH_ROOT."/uploads/".$this->item->tra_endereco_projeto)){
                             echo 'Arquivos atual: '. $this->item->tra_endereco_projeto;
                         }?>
                         <?php echo $this->form->renderField('projeto');  ?>

@@ -155,7 +155,7 @@
 			name="arquivos"
 			label="Arquivos relacionados ao trabalho"
 	>
-		<!-- <field
+		<field
 			name="projeto"
 			type="file"
 			class="inputbox"
@@ -163,9 +163,9 @@
 			label="Projeto do trabalho"
 			description="Arquivo pdf relativo ao projeto do trabalho acadêmico."
 			required=""
-			multiple="true"
+			multiple="false"
 			custom="deny"
-		/> -->
+		/>
 		<field
 			name="trabalho"
 			type="file"
@@ -174,7 +174,7 @@
 			label="Arquivo do trabalho"
 			description="Arquivo pdf relativo ao trabalho acadêmico."
 			required=""
-			multiple="true"
+			multiple="false"
 			custom="deny"
 		/>
 	</fieldset>
