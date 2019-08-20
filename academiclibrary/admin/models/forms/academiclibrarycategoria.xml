@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset>
+		<field
+				name="cat_id"
+				type="hidden"
+				/>
+		<field
+				name="cat_titulo"
+				type="text"
+				label="Título da categoria"
+				description="O campo deve ser prenchido com o título da categoria."
+				size="255"
+				class="inputbox"
+				default=""
+				/>
+	</fieldset>
+</form>

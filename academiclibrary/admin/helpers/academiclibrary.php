@@ -30,6 +30,11 @@ abstract class AcademicLibraryHelper extends JHelperContent
 	public static function addSubmenu($submenu) 
 	{
 		JHtmlSidebar::addEntry(
+			JText::_('Categorias'),
+			'index.php?option=com_academiclibrary&view=academiclibrarycategorias',
+			$submenu == 'academiclibrarycategorias'
+		);
+		JHtmlSidebar::addEntry(
 			JText::_('Docentes'),
 			'index.php?option=com_academiclibrary&view=academiclibrarydocentes',
 			$submenu == 'academiclibrarydocentes'

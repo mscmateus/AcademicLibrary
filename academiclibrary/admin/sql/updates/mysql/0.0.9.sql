@@ -1,5 +1,6 @@
 DROP TABLE IF EXISTS `#__al_docentes`;
 DROP TABLE IF EXISTS `#__al_discentes`;
+DROP TABLE IF EXISTS `#__al_categorias`;
 DROP TABLE IF EXISTS `#__al_trabalhos`;
 DROP TABLE IF EXISTS `#__al_banca`;
 DROP TABLE IF EXISTS `#__al_autoria`;
@@ -22,13 +23,21 @@ CREATE TABLE `#__al_discentes` (
 ENGINE =MyISAM
 AUTO_INCREMENT =0;
 
+CREATE TABLE `#__al_categorias` (
+	`cat_id` INT(10) NOT NULL AUTO_INCREMENT,
+	`cat_titulo` VARCHAR(255) NOT NULL,
+	PRIMARY KEY (`cat_id`)
+)
+ENGINE =MyISAM
+AUTO_INCREMENT =0;
+
 CREATE TABLE `#__al_trabalhos` (
 	`tra_id` INT(10) NOT NULL AUTO_INCREMENT,
 
 	`tra_tema` VARCHAR(255) NOT NULL,
 	`tra_titulo` VARCHAR(255) NOT NULL,
 	`tra_ano` INT(5) NOT NULL,
-	`tra_cat` INT(1) NOT NULL,
+	`tra_cat_id` INT(10) NOT NULL,
 	`tra_nota` DOUBLE(10,0) NOT NULL,
 	`tra_palavras_chaves` TEXT(65535) NOT NULL,
 	`tra_resumo` TEXT(65535) NOT NULL,
@@ -61,6 +70,8 @@ CREATE TABLE `#__al_orientacao` (
 )
 ENGINE =MyISAM;
 
+ALTER TABLE `#__al_trabalhos`
+   ADD CONSTRAINT tra_cat_id FOREIGN KEY(`tra_cat_id`) REFERENCES `#__al_categorias`(`cat_id`);
 
 ALTER TABLE `#__al_banca`
 	ADD CONSTRAINT ban_tra_id FOREIGN KEY(`ban_tra_id`) REFERENCES  `#__al_trabalhos`(`tra_id`),
@@ -82,3 +93,9 @@ INSERT INTO `#__al_docentes` (`doc_id`,`doc_nome`)
 VALUES (3, 'Catarina Costa');
 INSERT INTO `#__al_discentes` (`dis_id`, `dis_matricula`, `dis_nome`)
 VALUES (1, 20160300010, 'Mateus Costa');
+
+INSERT INTO `#__al_categorias` (`cat_id`,`cat_titulo`)
+VALUES (1, 'TCC');
+
+INSERT INTO `#__al_categorias` (`cat_id`,`cat_titulo`)
+VALUES (2, 'Estágio Supervisionado');
