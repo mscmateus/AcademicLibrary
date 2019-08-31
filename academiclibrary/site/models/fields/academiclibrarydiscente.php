@@ -45,7 +45,7 @@ class JFormFieldAcademicLibraryDiscente extends JFormFieldList
 		{
 			foreach ($messages as $message)
 			{
-				$options[] = JHtml::_('select.option', $message->dis_id,  $message->dis_matricula, $message->dis_nome);0
+				$options[] = JHtml::_('select.option', $message->dis_id,  $message->dis_matricula, $message->dis_nome);
 			}
 		}
 

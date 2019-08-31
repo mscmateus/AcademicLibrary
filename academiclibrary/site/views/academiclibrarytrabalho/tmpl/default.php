@@ -17,27 +17,15 @@
 ?>
 <input id="jform_title" type="hidden" name="helloworld-message-title"/>
 <div class="form-horizontal">
-<h1><?php echo $this->item->tra_cat==0 ? 'Trabalho de Conclusão de Curso' : 'Relatório de Estágio' ?></h1>
-<?php echo JHtml::_('bootstrap.startTabSet', 'TrabalhosTab', $options);?> 
-    <?php echo JHtml::_('bootstrap.addTab', 'TrabalhosTab', 'sobreTab', JText::_('Sobre o trabalho')); ?> 
+<h3><?php echo $this->item->tra_cat_titulo ?></h3> 
         <fieldset class="adminform">
             <div class="row-fluid">
                 <div class="span6">
-                    <h3>Título: <?php echo $this->item->tra_titulo ?></h3>
-                    <p>Tema: <?php echo $this->item->tra_tema ?></p>
-                    <p>Ano: <?php echo $this->item->tra_ano ?></p>
-                    <p>Palavras-chaves: <?php echo $this->item->tra_palavras_chaves ?></p>
-                    <p>Resumo: <?php echo $this->item->tra_resumo ?></p>
-                </div>
-            </div>
-        </fieldset>
-    <?php echo JHtml::_('bootstrap.endTab');?> 
-
-    <?php echo JHtml::_('bootstrap.addTab', 'TrabalhosTab', 'autoriaTab', JText::_('Autoria e Orientação')); ?> 
-        <fieldset class="adminform">
-            <div class="row-fluid">
-                <div class="span6">
-                    <p>Autoria: <?php
+                    <h1><?php echo $this->item->tra_titulo ?></h1>
+                    <br/>
+                    <h4>Sobre o trabalho</h4>
+                    <p><strong>Tema</strong>: <?php echo $this->item->tra_tema ?></p>
+                    <p><strong>Autoria</strong>: <?php
                     $aux=0;
                     foreach ($this->item->autores as $autor){
                         if($aux!= sizeof($this->item->autores)-1){
@@ -48,7 +36,7 @@
                         $aux++;
                     }
                     ?></p>
-                    <p>Orientação: <?php 
+                    <p><strong>Orientação</strong>: <?php 
                     $aux=0;
                     foreach ($this->item->orientadores as $orientador){
                         if($aux!= sizeof($this->item->orientadores)-1){
@@ -58,17 +46,12 @@
                         }
                         $aux++;
                     }?></p>
-                </div>
-            </div>
-        </fieldset>
-    <?php echo JHtml::_('bootstrap.endTab');?>
+                    <p><strong>Ano</strong>: <?php echo $this->item->tra_ano ?></p>
+                    <p><strong>Nota</strong>: <?php echo $this->item->tra_nota ?></p>
+                    <p><strong>Palavras-chaves</strong>: <?php echo $this->item->tra_palavras_chaves ?></p>
+                    <p><strong>Resumo</strong>: <?php echo $this->item->tra_resumo ?></p>
 
-    <?php echo JHtml::_('bootstrap.addTab', 'TrabalhosTab', 'bancaTab', JText::_('Banca avaliadora')); ?> 
-        <fieldset class="adminform">
-            <div class="row-fluid">
-                <div class="span6">
-                    <p>Data de defesa: <?php echo $this->item->tra_defesa_data ?></p>
-                    <p>Membros da banca: <?php 
+                    <p><strong>Membros da banca</strong>: <?php 
                     $aux=0;
                     foreach ($this->item->banca as $membro){
                         if($aux!= sizeof($this->item->banca)-1){
@@ -78,37 +61,31 @@
                         }
                         $aux++;
                     }?></p>
-                </div>
-            </div>
-        </fieldset> 
-    <?php echo JHtml::_('bootstrap.endTab');?>
+                    <p><strong>Data de defesa</strong>: <?php echo $this->item->tra_defesa_data ?></p>
+                    <br/>
+                    <h4>Download de arquivos</h4>
 
-    <?php echo JHtml::_('bootstrap.addTab', 'TrabalhosTab', 'arquivosTab', JText::_('Arquivos')); ?> 
-        <fieldset class="adminform">
-            <div class="row-fluid">
-                <div class="span6">
-                <?php
-                    jimport('joomla.filesystem.file');
-                    jimport( 'joomla.environment.uri' );
-                    if(JFile::exists(JPATH_ROOT."/uploads/".$this->item->tra_endereco_trabalho)){
-                        $link = JUri::root()."/uploads/".$this->item->tra_endereco_trabalho;
-                        echo '<a target="_blank" href="'.$link.'">visualizar arquivo do trabalho</a><br/>';
-                    }else{
-                        echo 'Não há arquivo do trabalho disponível.';
-                    }
-                    if(JFile::exists(JPATH_ROOT."/uploads/".$this->item->tra_endereco_projeto)){
-                        $link = JUri::root()."/uploads/".$this->item->tra_endereco_projeto;
-                        echo '<a target="_blank" href="'.$link.'">visualizar arquivo do projeto</a><br/>';
-                    }else{
-                        echo 'Não há arquivo do projeto disponível.';
-                    }
-                ?>
+                    <?php
+                        jimport('joomla.filesystem.file');
+                        jimport( 'joomla.environment.uri' );
+
+                        if(JFile::exists(JPATH_ROOT."/uploads/".$this->item->tra_endereco_trabalho)){
+                            $link = JUri::root()."/uploads/".$this->item->tra_endereco_trabalho;
+                            echo '<a target="_blank" href="'.$link.'"><img src="https://797ib1mbyf481ftl3rimdn3x-wpengine.netdna-ssl.com/wp-content/uploads/2017/08/Download-Icon-1.png" style="width:42px;height:42px;border:10;"/>Arquivo do trabalho</a><br/>';
+                        }else{
+                            echo 'Não há arquivo do trabalho disponível.<br/>';
+                        }
+
+                        if(JFile::exists(JPATH_ROOT."/uploads/".$this->item->tra_endereco_projeto)){
+                            $link = JUri::root()."/uploads/".$this->item->tra_endereco_projeto;
+                            echo '<a target="_blank" href="'.$link.'"><img src="https://797ib1mbyf481ftl3rimdn3x-wpengine.netdna-ssl.com/wp-content/uploads/2017/08/Download-Icon-1.png" style="width:42px;height:42px;border:10;"/>Arquivo do projeto</a><br/>';
+                        }else{
+                            echo 'Não há arquivo do projeto disponível.';
+                        }
+                    ?>
                 </div>
             </div>
         </fieldset>
-    <?php echo JHtml::_('bootstrap.endTab');?>
-
-<?php echo JHtml::_('bootstrap.endTabSet');?>
 </div>
 <input type="hidden" name="task" value="academiclibrarytrabalho.exibi" />
 <?php echo JHtml::_('form.token'); ?>

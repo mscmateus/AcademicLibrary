@@ -138,6 +138,18 @@ class AcademicLibraryModelAcademicLibraryTrabalho extends JModelAdmin
 				$item->banca[$aux]=$membro->doc_nome;
 				$aux++;
 			}
+
+			$query = $db->getQuery(true);
+			$query
+				->select(array('cat_titulo'))
+				->from($db->quoteName('#__al_categorias', 'c'))
+				->where($db->quoteName('c.cat_id'). '=' . $item->tra_cat_id);
+			$db->setQuery($query);
+			$db->execute();
+			// Reset the query using our newly populated query object.
+			$catTitulo = $db->loadObjectList();
+			$item->tra_cat_titulo = $catTitulo[0]->cat_titulo;
+
 		}
 		//var_dump($item);
 		return $item;

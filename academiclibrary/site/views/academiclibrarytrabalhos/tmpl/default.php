@@ -74,8 +74,19 @@ $listDirn      = $this->escape($this->filter_order_Dir);
 						</td>
 
 						<td align="center">
-								<?php echo ( $row->tra_cat==0 ? "Trabalho de Conclussão de Curso": "Relatório de Estágio"); ?>
-							</a>
+						<?php 
+								$db = JFactory::getDbo();
+								$query = $db->getQuery(true);
+								$query
+									->select(array('cat_titulo'))
+									->from($db->quoteName('#__al_categorias', 'c'))
+									->where($db->quoteName('c.cat_id'). '=' . $row->tra_cat_id);
+								$db->setQuery($query);
+								$db->execute();
+								// Reset the query using our newly populated query object.
+								$result = $db->loadObjectList();
+								echo $result[0]->cat_titulo;
+								?>
 						</td>
 
 						<td>

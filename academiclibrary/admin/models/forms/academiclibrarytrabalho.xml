@@ -24,7 +24,7 @@
 			size="255"
 			class="inputbox"
 			default=""
-			required="true"
+			
 			/>
 		<field
 			name="tra_titulo"
@@ -34,7 +34,7 @@
 			size="255"
 			class="inputbox"
 			default=""
-			required="true"
+			
 			/>
 		<field
 			name="tra_ano"
@@ -44,21 +44,18 @@
 			size="4"
 			class="inputbox"
 			default=""
-			required="true"
+			
 			/>
 		<field
-			name="tra_cat"
-			type="category"
+			name="tra_cat_id"
+			type="academiccategoria"
 			label="Caregoria"
 			description="Selecione a categoria do trabalho."
 			class="inputbox"
 			default=""
 			extension=""
-			required="true"
-			>
-			<option value="0">Trabalho de Conclusão de Curso</option>
-			<option value="1">Relatório de Estágio</option>
-		</field>
+			
+			/>
 		<field
 			name="tra_nota"
 			type="number"
@@ -66,7 +63,7 @@
 			description="O campo deve ser prenchido com a nota do trabalho."
 			size="5"
 			class="inputbox"
-			required="true"
+			
 			default=""
 			/>
 		<field
@@ -78,7 +75,7 @@
 			rows="7"
 			cols="300"
 			class="inputbox"
-			required="true"
+			
 			default=""
 			/>
 		<field
@@ -90,7 +87,7 @@
 			rows="7"
 			cols="300"
 			class="inputbox"
-			required="true"
+			
 			default=""
 			/>
 	</fieldset>
@@ -133,12 +130,11 @@
 			label="Data de defesa"
 			description=""
 			class="input-small" 
-			required="true"
+			format="%d/%m/%Y"
 			filter="user_utc"
 			showtime="false"
 			todaybutton="false" 
-			filltable="false"
-			translateformat="true" />
+			filltable="false"/>
 		<field
 			name="banca"
 			type="academicbanca"

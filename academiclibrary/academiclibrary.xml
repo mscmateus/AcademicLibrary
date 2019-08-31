@@ -49,9 +49,14 @@
 			<folder>controllers</folder>
 	</files>
 
-        <languages folder="site/language">
+   <languages folder="site/language">
 		<language tag="en-GB">en-GB/en-GB.com_academiclibrary.ini</language>
-        </languages>
+   </languages>
+
+	<media destination="com_helloworld" folder="media">
+		<filename>index.html</filename>
+		<folder>images</folder>
+	</media>
 
 	<administration>
 		<!-- Administration Menu Section -->
