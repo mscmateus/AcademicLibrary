@@ -71,14 +71,14 @@
 
                         if(JFile::exists(JPATH_ROOT."/uploads/".$this->item->tra_endereco_trabalho)){
                             $link = JUri::root()."/uploads/".$this->item->tra_endereco_trabalho;
-                            echo '<a target="_blank" href="'.$link.'"><img src="https://797ib1mbyf481ftl3rimdn3x-wpengine.netdna-ssl.com/wp-content/uploads/2017/08/Download-Icon-1.png" style="width:42px;height:42px;border:10;"/>Arquivo do trabalho</a><br/>';
+                            echo '<a target="_blank" href="'.$link.'">Arquivo do trabalho</a><br/>';
                         }else{
                             echo 'Não há arquivo do trabalho disponível.<br/>';
                         }
 
                         if(JFile::exists(JPATH_ROOT."/uploads/".$this->item->tra_endereco_projeto)){
                             $link = JUri::root()."/uploads/".$this->item->tra_endereco_projeto;
-                            echo '<a target="_blank" href="'.$link.'"><img src="https://797ib1mbyf481ftl3rimdn3x-wpengine.netdna-ssl.com/wp-content/uploads/2017/08/Download-Icon-1.png" style="width:42px;height:42px;border:10;"/>Arquivo do projeto</a><br/>';
+                            echo '<a target="_blank" href="'.$link.'">Arquivo do projeto</a><br/>';
                         }else{
                             echo 'Não há arquivo do projeto disponível.';
                         }

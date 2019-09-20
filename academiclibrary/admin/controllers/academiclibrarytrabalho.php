@@ -166,6 +166,15 @@ class AcademicLibraryControllerAcademicLibraryTrabalho extends JControllerForm
 		$projeto = $files["projeto"];
 		$trabalho = $files["trabalho"];
 
+		if($projeto["name"] != ''){
+			$extencao = explode(".", $projeto["name"]);
+			$projeto["name"] = "pro".time().".".$extencao[1];
+		}
+		if($trabalho["name"] != ''){
+			$extencao = explode(".", $trabalho["name"]);
+			$trabalho["name"] = "tra".time().".".$extencao[1];
+		}
+
 
 		$file_exttra=strtolower(end(explode('.',JFile::makeSafe($trabalho['name']))));
 		$filenametra = $trabalho['name'] = str_replace(' ', '-', $trabalho['name']);

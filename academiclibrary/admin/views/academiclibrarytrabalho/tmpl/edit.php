@@ -18,6 +18,7 @@
     $vetFild;
     jimport('joomla.filesystem.folder');
     jimport('joomla.filesystem.file');
+    jimport( 'joomla.environment.uri' );
 ?>
 <form action="<?php echo JRoute::_('index.php?option=com_academiclibrary&layout=edit&tra_id=' . (int) $this->item->tra_id); ?>" method="post" name="adminForm" id="adminForm" enctype="multipart/form-data">
     <input id="jform_title" type="hidden" name="helloworld-message-title"/>
@@ -64,12 +65,15 @@
             <legend><?php echo JText::_('Arquivos relacionados ao trabalho') ?></legend>
                 <div class="row-fluid">
                     <div class="span6">
-                        <?php if(JFile::exists(JPATH_ROOT."/uploads/".$this->item->tra_endereco_trabalho)){
-                            echo "Arquivos atual: ".$this->item->tra_endereco_trabalho;
+                        <?php 
+                        if(JFile::exists(JPATH_ROOT."/uploads/".$this->item->tra_endereco_trabalho)){
+                            $linkArquivo = JUri::root()."/uploads/".$this->item->tra_endereco_trabalho;
+                            echo '<a target="_blank" href="'.$linkArquivo.'">Visualizar arquivo do trabalho atual</a><br/>';
                         }?>
                         <?php echo $this->form->renderField('trabalho');?>
                         <?php if(JFile::exists(JPATH_ROOT."/uploads/".$this->item->tra_endereco_projeto)){
-                            echo 'Arquivos atual: '. $this->item->tra_endereco_projeto;
+                            $linkArquivo = JUri::root()."/uploads/".$this->item->tra_endereco_projeto;
+                            echo '<a target="_blank" href="'.$linkArquivo.'">Visualizar arquivo do projeto atual</a><br/>';
                         }?>
                         <?php echo $this->form->renderField('projeto');  ?>
                     </div>

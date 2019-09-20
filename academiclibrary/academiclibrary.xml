@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="component" version="3.0" method="upgrade">
 
-	<name>COM_ACADEMICLIBRARY</name>
+	<name>Academic Library</name>
 	<!-- The following elements are optional and free of formatting constraints -->
-	<creationDate>June 2019</creationDate>
+	<creationDate>Setembro de 2019</creationDate>
 	<author>Mateus Costa</author>
 	<authorEmail>msc.mateus@hotmail.com</authorEmail>
 	<authorUrl></authorUrl>
 	<copyright>Copyright Info</copyright>
 	<license>License Info</license>
 	<!--  The version string is recorded in the components table -->
-	<version>0.0.9</version>
+	<version>1</version>
 	<!-- The description is optional and defaults to the name -->
-	<description>COM_HELLOWORLD_DESCRIPTION</description>
+	<description>Componente para gestão de trabalos acadêmicos</description>
 
 	<install> <!-- Runs on install -->
 		<sql>
@@ -49,15 +49,6 @@
 			<folder>controllers</folder>
 	</files>
 
-   <languages folder="site/language">
-		<language tag="en-GB">en-GB/en-GB.com_academiclibrary.ini</language>
-   </languages>
-
-	<media destination="com_helloworld" folder="media">
-		<filename>index.html</filename>
-		<folder>images</folder>
-	</media>
-
 	<administration>
 		<!-- Administration Menu Section -->
 		<menu link='index.php?option=com_academiclibrar'>Academic Library</menu>
@@ -83,10 +74,6 @@
 			<!-- helpers files section -->
 			<folder>helpers</folder>
 		</files>
-		<languages folder="admin/language">
-        		<language tag="en-GB">en-GB/en-GB.com_academiclibrary.ini</language>
-                        <language tag="en-GB">en-GB/en-GB.com_academiclibrary.sys.ini</language>
-		</languages>
 	</administration>
 
 </extension>
