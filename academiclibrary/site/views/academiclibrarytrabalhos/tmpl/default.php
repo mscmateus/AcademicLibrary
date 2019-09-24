@@ -131,8 +131,8 @@ $listDirn      = $this->escape($this->filter_order_Dir);
 
 						<td align="center">
 							<?php 
-								if(JFile::exists(JPATH_ROOT."/uploads/".$row->tra_endereco_trabalho)){
-									$link = JUri::root()."/uploads/".$row->tra_endereco_trabalho;
+								if(JFile::exists(JPath::clean(JPATH_ROOT."/academicUploads/".$row->tra_endereco_trabalho))){
+									$link = JUri::root().JPath::clean("/academicUploads/".$row->tra_endereco_trabalho);
 									echo '<a target="_blank" href="'.$link.'">Visualizar</a>';
                         }else{
 									echo 'Indisponível';

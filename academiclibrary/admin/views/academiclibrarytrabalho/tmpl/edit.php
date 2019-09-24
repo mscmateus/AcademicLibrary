@@ -66,13 +66,13 @@
                 <div class="row-fluid">
                     <div class="span6">
                         <?php 
-                        if(JFile::exists(JPATH_ROOT."/uploads/".$this->item->tra_endereco_trabalho)){
-                            $linkArquivo = JUri::root()."/uploads/".$this->item->tra_endereco_trabalho;
+                        if(JFile::exists(JPath::clean(JPATH_ROOT."/academicUploads/".$this->item->tra_endereco_trabalho))){
+                            $linkArquivo = JUri::root().JPath::clean("/academicUploads/".$this->item->tra_endereco_trabalho);
                             echo '<a target="_blank" href="'.$linkArquivo.'">Visualizar arquivo do trabalho atual</a><br/>';
                         }?>
                         <?php echo $this->form->renderField('trabalho');?>
-                        <?php if(JFile::exists(JPATH_ROOT."/uploads/".$this->item->tra_endereco_projeto)){
-                            $linkArquivo = JUri::root()."/uploads/".$this->item->tra_endereco_projeto;
+                        <?php if(JFile::exists(JPath::clean(JPATH_ROOT."/academicUploads/".$this->item->tra_endereco_projeto))){
+                            $linkArquivo = JUri::root().JPath::clean("/academicUploads/".$this->item->tra_endereco_projeto);
                             echo '<a target="_blank" href="'.$linkArquivo.'">Visualizar arquivo do projeto atual</a><br/>';
                         }?>
                         <?php echo $this->form->renderField('projeto');  ?>

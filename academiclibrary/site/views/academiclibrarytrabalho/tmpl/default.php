@@ -69,15 +69,15 @@
                         jimport('joomla.filesystem.file');
                         jimport( 'joomla.environment.uri' );
 
-                        if(JFile::exists(JPATH_ROOT."/uploads/".$this->item->tra_endereco_trabalho)){
-                            $link = JUri::root()."/uploads/".$this->item->tra_endereco_trabalho;
+                        if(JFile::exists(JPath::clean(JPATH_ROOT."/academicUploads/".$this->item->tra_endereco_trabalho))){
+                            $link = JUri::root().JPath::clean("/academicUploads/".$this->item->tra_endereco_trabalho);
                             echo '<a target="_blank" href="'.$link.'">Arquivo do trabalho</a><br/>';
                         }else{
                             echo 'Não há arquivo do trabalho disponível.<br/>';
                         }
 
-                        if(JFile::exists(JPATH_ROOT."/uploads/".$this->item->tra_endereco_projeto)){
-                            $link = JUri::root()."/uploads/".$this->item->tra_endereco_projeto;
+                        if(JFile::exists(JPath::clean(JPATH_ROOT."/academicUploads/".$this->item->tra_endereco_projeto))){
+                            $link = JUri::root().JPath::clean("/academicUploads/".$this->item->tra_endereco_projeto);
                             echo '<a target="_blank" href="'.$link.'">Arquivo do projeto</a><br/>';
                         }else{
                             echo 'Não há arquivo do projeto disponível.';

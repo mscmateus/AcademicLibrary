@@ -17,7 +17,8 @@ defined('_JEXEC') or die('Restricted access');
  * @since       0.0.9
  */
 
-
+jimport('joomla.filesystem.file');
+jimport('joomla.filesystem.folder');
 
 class AcademicLibraryControllerAcademicLibraryTrabalho extends JControllerForm
 {
@@ -141,8 +142,7 @@ class AcademicLibraryControllerAcademicLibraryTrabalho extends JControllerForm
 		error_reporting(E_ALL);
 		
 		// Neccesary libraries and variables
-		jimport('joomla.filesystem.file');
-		jimport('joomla.filesystem.folder');
+
 		// Get input object
 		$jinput = JFactory::getApplication()->input;
 		
@@ -181,17 +181,17 @@ class AcademicLibraryControllerAcademicLibraryTrabalho extends JControllerForm
 		// Move the uploaded file into a permanent location.
 		if ( $filenametra != '' && $filenametra != $data["tra_endereco_projeto"]) {
 			// Make sure that the full file path is safe.s
-			$filepathtra = JPath::clean(JPATH_ROOT."/uploads/". $filenametra);
+			$filepathtra = JPath::clean(JPATH_ROOT."/academicUploads/". $filenametra);
 			// Move the uploaded file.
 			if($this->edicao == true){
-					JFile::delete(JPath::clean(JPATH_ROOT."/uploads/".$data["tra_endereco_trabalho"]));
+					JFile::delete(JPath::clean(JPATH_ROOT."/academicUploads/".$data["tra_endereco_trabalho"]));
 					$data["tra_endereco_trabalho"] = "";
 					if(JFile::upload( $trabalho['tmp_name'], $filepathtra )){
 						$data["tra_endereco_trabalho"] = $filenametra;
 					}
 			}else{
 				if(JFile::upload( $trabalho['tmp_name'], $filepathtra )){
-					//JFile::delete(JPath::clean(JPATH_ROOT."/uploads/".$data["tra_endereco_projeto"]));
+					//JFile::delete(JPath::clean(JPATH_ROOT."/academicUploads/".$data["tra_endereco_projeto"]));
 					$data["tra_endereco_trabalho"] = $filenametra;
 				}
 			}
@@ -202,17 +202,17 @@ class AcademicLibraryControllerAcademicLibraryTrabalho extends JControllerForm
 		// Move the uploaded file into a permanent location.
 		if ( $filenametra != '' && $filenametra != $data["tra_endereco_projeto"]) {
 			// Make sure that the full file path is safe.s
-			$filepathtra = JPath::clean(JPATH_ROOT."/uploads/". $filenametra);
+			$filepathtra = JPath::clean(JPATH_ROOT."/academicUploads/". $filenametra);
 			// Move the uploaded file.
 			if($this->edicao == true){
-					JFile::delete(JPath::clean(JPATH_ROOT."/uploads/".$data["tra_endereco_projeto"]));
+					JFile::delete(JPath::clean(JPATH_ROOT."/academicUploads/".$data["tra_endereco_projeto"]));
 					$data["tra_endereco_projeto"] = "";
 					if(JFile::upload( $projeto['tmp_name'], $filepathtra )){
 						$data["tra_endereco_projeto"] = $filenametra;
 					}
 			}else{
 				if(JFile::upload( $projeto['tmp_name'], $filepathtra )){
-					//JFile::delete(JPath::clean(JPATH_ROOT."/uploads/".$data["tra_endereco_projeto"]));
+					//JFile::delete(JPath::clean(JPATH_ROOT."/academicUploads/".$data["tra_endereco_projeto"]));
 					$data["tra_endereco_projeto"] = $filenametra;
 				}
 			}

@@ -53,7 +53,7 @@
 
 	<administration>
 		<!-- Administration Menu Section -->
-		<menu link='index.php?option=com_academiclibrar'>Academic Library</menu>
+		<menu link='index.php?option=com_academiclibrary'>Academic Library</menu>
 		<!-- Administration Main File Copy Section -->
 		<!-- Note the folder attribute: This attribute describes the folder
 			to copy FROM in the package to install therefore files copied

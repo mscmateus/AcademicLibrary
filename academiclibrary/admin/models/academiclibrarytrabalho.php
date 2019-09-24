@@ -162,8 +162,8 @@ class AcademicLibraryModelAcademicLibraryTrabalho extends JModelAdmin
 				$db->execute();
 				$filesNamesh=$db->loadObjectList();
 
-				JFile::delete(JPath::clean(JPATH_ROOT."/uploads/".$filesNamesh[0]->tra_endereco_projeto));
-				JFile::delete(JPath::clean(JPATH_ROOT."/uploads/".$filesNamesh[0]->tra_endereco_trabalho));
+				JFile::delete(JPath::clean(JPATH_ROOT."/academicUploads/".$filesNamesh[0]->tra_endereco_projeto));
+				JFile::delete(JPath::clean(JPATH_ROOT."/academicUploads/".$filesNamesh[0]->tra_endereco_trabalho));
 
 			$query = $db->getQuery(true);
 			
