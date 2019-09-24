@@ -38,7 +38,7 @@ CREATE TABLE `#__al_trabalhos` (
 	`tra_titulo` VARCHAR(255) NOT NULL,
 	`tra_ano` INT(5) NOT NULL,
 	`tra_cat_id` INT(10) NOT NULL,
-	`tra_nota` DOUBLE(10,0) NOT NULL,
+	`tra_nota` DECIMAL(2,1) NOT NULL,
 	`tra_palavras_chaves` TEXT(65535) NOT NULL,
 	`tra_resumo` TEXT(65535) NOT NULL,
 	`tra_defesa_data` DATE NOT NULL,

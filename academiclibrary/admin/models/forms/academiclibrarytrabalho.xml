@@ -24,7 +24,7 @@
 			size="255"
 			class="inputbox"
 			default=""
-			
+			required="true"
 			/>
 		<field
 			name="tra_titulo"
@@ -34,17 +34,19 @@
 			size="255"
 			class="inputbox"
 			default=""
-			
+			required="true"
 			/>
 		<field
 			name="tra_ano"
 			type="number"
 			label="Ano"
+			min="1900"
+			max="9999"
 			description="O campo deve ser prenchido com o ano de apresentação do trabalho."
 			size="4"
 			class="inputbox"
-			default=""
-			
+			default="1900"
+			required="true"
 			/>
 		<field
 			name="tra_cat_id"
@@ -54,17 +56,20 @@
 			class="inputbox"
 			default=""
 			extension=""
-			
+
 			/>
 		<field
 			name="tra_nota"
 			type="number"
 			label="Nota"
+			min="0"
+			max="9999"
 			description="O campo deve ser prenchido com a nota do trabalho."
-			size="5"
+			size="4"
 			class="inputbox"
-			
-			default=""
+			step="0.1"
+			default="0"
+			required="true"
 			/>
 		<field
 			name="tra_palavras_chaves"
@@ -75,7 +80,6 @@
 			rows="7"
 			cols="300"
 			class="inputbox"
-			
 			default=""
 			/>
 		<field
@@ -87,7 +91,6 @@
 			rows="7"
 			cols="300"
 			class="inputbox"
-			
 			default=""
 			/>
 	</fieldset>
@@ -102,9 +105,9 @@
 			default=""
 			label="Autor"
 			description="Use Ctrl to select multiple categories."
-			required=""
 			multiple="true"
 			custom="deny"
+			required="true"
 		/>
 
 		<field
@@ -114,7 +117,7 @@
 			default=""
 			label="Orientador"
 			description="Use Ctrl to select multiple categories."
-			required=""
+			required="true"
 			multiple="true"
 			custom="deny"
 		/>
