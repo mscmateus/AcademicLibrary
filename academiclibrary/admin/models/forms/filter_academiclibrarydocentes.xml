@@ -4,7 +4,7 @@
 		<field
 			name="search"
 			type="text"
-			label="COM_BANNERS_SEARCH_IN_TITLE"
+			label="Pesquisar"
 			hint="JSEARCH_FILTER"
 			class="js-stools-search-string"
 		/>
@@ -15,8 +15,8 @@
 			type="limitbox"
 			class="input-mini"
 			default="25"
-			label="COM_CONTENT_LIST_LIMIT"
-			description="COM_HELLOWORLD_LIST_LIMIT_DESC"
+			label="Limite de listagem"
+			description="Limite de listagem para exibir"
 			onchange="this.form.submit();"
 		/>
 	</fields>

@@ -168,11 +168,11 @@ class AcademicLibraryControllerAcademicLibraryTrabalho extends JControllerForm
 
 		if($projeto["name"] != ''){
 			$extencao = explode(".", $projeto["name"]);
-			$projeto["name"] = "pro".time().".".$extencao[1];
+			$projeto["name"] = "pro".time().".".$extencao[sizeof($extencao)-1];
 		}
 		if($trabalho["name"] != ''){
 			$extencao = explode(".", $trabalho["name"]);
-			$trabalho["name"] = "tra".time().".".$extencao[1];
+			$trabalho["name"] = "tra".time().".".$extencao[sizeof($extencao)-1];
 		}
 
 

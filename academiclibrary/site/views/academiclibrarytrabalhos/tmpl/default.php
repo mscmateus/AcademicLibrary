@@ -10,6 +10,9 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted Access');
 
+jimport('joomla.filesystem.file');
+jimport( 'joomla.environment.uri' );
+
 JHtml::_('formbehavior.chosen', 'select');
 
 $listOrder     = $this->escape($this->filter_order);
@@ -43,11 +46,15 @@ $listDirn      = $this->escape($this->filter_order_Dir);
 			<?php echo JHtml::_('grid.sort', 'Título', 'tra_titulo', $listDirn, $listOrder); ?>
 			</th>
 		
-			<th width="27%">
+			<th width="25%">
 			<?php echo JHtml::_('grid.sort', 'Autor', 'dis_nome', $listDirn, $listOrder); ?>
 			</th>
+
+			<th width="5%">
+			<?php echo JHtml::_('grid.sort', 'Arquivo', 'tra_endereco_trabalho', $listDirn, $listOrder); ?>
+			</th>
 			
-			<th width="10%">
+			<th width="7%">
 			<?php echo JHtml::_('grid.sort', 'ano', 'tra_ano', $listDirn, $listOrder); ?>
 			</th>
 
@@ -118,6 +125,18 @@ $listDirn      = $this->escape($this->filter_order_Dir);
 								}
 								$aux++;
 							}
+								?>
+						</td>
+
+
+						<td align="center">
+							<?php 
+								if(JFile::exists(JPATH_ROOT."/uploads/".$row->tra_endereco_trabalho)){
+									$link = JUri::root()."/uploads/".$row->tra_endereco_trabalho;
+									echo '<a target="_blank" href="'.$link.'">Visualizar</a>';
+                        }else{
+									echo 'Indisponível';
+								}
 								?>
 						</td>
 

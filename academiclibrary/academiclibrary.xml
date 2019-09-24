@@ -12,7 +12,7 @@
 	<!--  The version string is recorded in the components table -->
 	<version>1</version>
 	<!-- The description is optional and defaults to the name -->
-	<description>Componente para gestão de trabalos acadêmicos</description>
+	<description>Componente para gestão de trabalhos acadêmicos</description>
 
 	<install> <!-- Runs on install -->
 		<sql>
