@@ -16,7 +16,7 @@ AUTO_INCREMENT =0;
 
 CREATE TABLE `#__al_discentes` (
 	`dis_id` INT(10) NOT NULL AUTO_INCREMENT,
-	`dis_matricula` BIGINT(11) NOT NULL,
+	`dis_matricula` BIGINT(11),
 	`dis_nome` VARCHAR(255) NOT NULL, 
 	PRIMARY KEY (`dis_id`)
 )
@@ -84,19 +84,3 @@ ALTER TABLE `#__al_autoria`
 ALTER TABLE `#__al_orientacao`
 	ADD CONSTRAINT ori_tra_id FOREIGN KEY(`ori_tra_id`) REFERENCES  `#__al_trabalhos`(`tra_id`),
    ADD CONSTRAINT ori_doc_id FOREIGN KEY(`ori_doc_id`) REFERENCES `#__al_docentes`(`doc_id`);
-
-INSERT INTO `#__al_docentes` (`doc_id`,`doc_nome`)
-VALUES (1, 'Manoel Limeira');
-INSERT INTO `#__al_docentes` (`doc_id`,`doc_nome`)
-VALUES (2, 'Macilon Araújo');
-INSERT INTO `#__al_docentes` (`doc_id`,`doc_nome`)
-VALUES (3, 'Catarina Costa');
-
-INSERT INTO `#__al_discentes` (`dis_id`, `dis_matricula`, `dis_nome`)
-VALUES (1, 20160300010, 'Mateus Costa');
-
-INSERT INTO `#__al_categorias` (`cat_id`,`cat_titulo`)
-VALUES (1, 'TCC');
-
-INSERT INTO `#__al_categorias` (`cat_id`,`cat_titulo`)
-VALUES (2, 'Estágio Supervisionado');
