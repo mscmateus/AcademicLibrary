@@ -34,17 +34,17 @@ AUTO_INCREMENT =0;
 CREATE TABLE `#__al_trabalhos` (
 	`tra_id` INT(10) NOT NULL AUTO_INCREMENT,
 
-	`tra_tema` VARCHAR(255) NOT NULL,
-	`tra_titulo` VARCHAR(255) NOT NULL,
-	`tra_ano` INT(5) NOT NULL,
-	`tra_cat_id` INT(10) NOT NULL,
-	`tra_nota` DECIMAL(2,1) NOT NULL,
-	`tra_palavras_chaves` TEXT(65535) NOT NULL,
-	`tra_resumo` TEXT(65535) NOT NULL,
-	`tra_defesa_data` DATE NOT NULL,
+	`tra_tema` VARCHAR(255),
+	`tra_titulo` VARCHAR(255),
+	`tra_ano` INT(5),
+	`tra_cat_id` INT(10),
+	`tra_nota` DECIMAL(2,1),
+	`tra_palavras_chaves` TEXT(65535),
+	`tra_resumo` TEXT(65535),
+	`tra_defesa_data` DATE,
 
-	`tra_endereco_projeto` VARCHAR(255) NOT NULL,
-	`tra_endereco_trabalho` VARCHAR(255) NOT NULL,
+	`tra_endereco_projeto` VARCHAR(255),
+	`tra_endereco_trabalho` VARCHAR(255),
 
 	`published` tinyint(4) NOT NULL DEFAULT '1',
 	PRIMARY KEY (`tra_id`)

@@ -51,8 +51,7 @@ class AcademicLibraryModelAcademicLibraryTrabalhos extends JModelList
 
 		// Create the base select statement.
 		$query->select('*')
-		->from($db->quoteName('#__al_trabalhos','t'))
-		->where($db->quoteName('t.tra_defesa_data'). ">'". date('d/m/Y') ."'");
+		->from($db->quoteName('#__al_trabalhos'));
 					 
 		// Filter: like / search
 		$search = $this->getState('filter.search');

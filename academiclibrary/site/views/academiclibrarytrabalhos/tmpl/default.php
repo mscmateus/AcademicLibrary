@@ -97,7 +97,7 @@ $listDirn      = $this->escape($this->filter_order_Dir);
 						</td>
 
 						<td>
-							<a href="<?php echo $link; ?>" title="<?php echo JText::_('Inserção de trabalho acadêmico'); ?>">
+							<a href="<?php echo $link; ?>" title="<?php echo JText::_('Trabalho acadêmico'); ?>">
 								<?php echo $row->tra_titulo; ?>
 							</a>
 						</td>

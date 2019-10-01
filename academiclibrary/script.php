@@ -50,7 +50,7 @@ class com_academicLibraryInstallerScript
      */
     public function uninstall($parent) 
     {
-        if(JFolder::exist(JPath::clean(JPATH_ROOT."/academicUploads/"))){
+        if(JFolder::exists(JPath::clean(JPATH_ROOT."/academicUploads/"))){
             JFolder::delete(JPath::clean(JPATH_ROOT."/academicUploads/"));
         }
       echo '<p>' . JText::_('Academic Library desinstalado com sucesso. :(') . '</p>';
