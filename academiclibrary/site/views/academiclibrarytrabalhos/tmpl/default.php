@@ -18,6 +18,7 @@ JHtml::_('formbehavior.chosen', 'select');
 $listOrder     = $this->escape($this->filter_order);
 $listDirn      = $this->escape($this->filter_order_Dir);
 ?>
+<h1>Trabalhos Acadêmicos</h1>
 <form action="index.php?option=com_academiclibrary&view=academiclibrarytrabalhos" method="post" id="adminForm" name="adminForm">
 	<div class="row-fluid">
 		<div class="span6">

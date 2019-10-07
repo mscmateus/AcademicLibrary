@@ -47,7 +47,7 @@
                         $aux++;
                     }?></p>
                     <p><strong>Ano</strong>: <?php echo $this->item->tra_ano ?></p>
-                    <p><strong>Nota</strong>: <?php echo $this->item->tra_nota ?></p>
+                    <p><strong>Nota</strong>: <?php echo $this->item->tra_nota == 0.0 ? "Não definida": $this->item->tra_nota ?></p>
                     <p><strong>Palavras-chaves</strong>: <?php echo $this->item->tra_palavras_chaves ?></p>
                     <p><strong>Resumo</strong>: <?php echo $this->item->tra_resumo ?></p>
 
@@ -61,7 +61,9 @@
                         }
                         $aux++;
                     }?></p>
-                    <p><strong>Data de defesa</strong>: <?php echo $this->item->tra_defesa_data ?></p>
+                    <p><strong>Data de defesa</strong>: <?php 
+                        echo $item->tra_defesa_data = date_format(date_create($this->item->tra_defesa_data), "d/m/Y");
+                    ?></p>
                     <br/>
                     <h4>Download de arquivos</h4>
 
